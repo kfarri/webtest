@@ -10,7 +10,7 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    color: #ffffff;
+    color: #333;
     background-color: #f8f9fa;
 }
 
@@ -117,7 +117,7 @@ main {
    ========================================================================== */
 .hero {
     /* 배경 이미지와 어두운 오버레이 */
-    background-image: linear-gradient(rgba(30, 60, 114, 0.7), rgba(42, 82, 152, 0.7)), url('./image/boat2.jpg');
+    background-image: linear-gradient(rgba(30, 60, 114, 0.7), rgba(42, 82, 152, 0.7)), url('./image/boat3.jpg');
     background-size: cover; /* 배경 이미지 전체 덮도록 */
     background-position: center; /* 이미지 중앙 정렬 */
     background-repeat: no-repeat; /* 이미지 반복 안함 */
@@ -131,7 +131,7 @@ main {
     /* 폴백 배경색 (이미지 로드 실패시) */
     background-color: #1e3c72;
     /* 모바일에서도 이미지가 잘 보이도록 최소 높이 설정 */
-    /* min-height: 60vh; */
+    min-height: 60vh;
 }
 
 /* 히어로 섹션 장식 효과 */
@@ -144,6 +144,15 @@ main {
     bottom: 0;
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50" cy="50" r="50"><stop offset="0" stop-color="rgba(255,255,255,.1)"/><stop offset="1" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><circle cx="10" cy="10" r="10" fill="url(%23a)"><animateTransform attributeName="transform" type="translate" values="0 0; 90 0; 0 0" dur="2s" repeatCount="indefinite"/></circle></svg>') repeat;
     opacity: 0.1;
+    /* 모바일에서는 장식 효과 숨김 */
+    display: block;
+}
+
+/* 모바일에서 장식 효과 완전 제거 */
+@media (max-width: 768px) {
+    .hero::before {
+        display: none;
+    }
 }
 
 /* 히어로 콘텐츠 */
@@ -364,6 +373,11 @@ footer p {
         font-size: 1.2rem;
     }
     
+    /* 모바일에서 히어로 섹션 이미지 중앙 정렬 */
+    .hero {
+        background-position: center center; /* 모바일에서 중앙 정렬 */
+    }
+    
     /* 히어로 섹션 텍스트 크기 조정 */
     .hero h2 {
         font-size: 2rem;
@@ -421,6 +435,7 @@ footer p {
         min-height: 50vh; /* 모바일에서 높이 조정 */
         /* 모바일에서 배경 이미지 강제 적용 */
         background-attachment: scroll !important;
+        background-position: center center !important; /* 모바일에서 강제로 중앙 정렬 */
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -428,6 +443,11 @@ footer p {
         /* iOS Safari에서 배경 이미지 버그 해결 */
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
+    }
+    
+    /* 모바일에서 장식 효과 완전 제거 */
+    .hero::before {
+        display: none !important;
     }
     
     .hero h2 {
