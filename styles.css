@@ -116,17 +116,22 @@ main {
    히어로 섹션 (첫 화면 배너)
    ========================================================================== */
 .hero {
-    /* 배경 이미지 예시 - 아래 주석을 해제하고 이미지 URL을 넣으세요 */
-     background-image: linear-gradient(rgba(30, 60, 114, 0.7), rgba(42, 82, 152, 0.7)), url('./image/boat3.jpg');
+    /* 배경 이미지와 어두운 오버레이 */
+    background-image: linear-gradient(rgba(30, 60, 114, 0.7), rgba(42, 82, 152, 0.7)), url('./image/boat3.jpg');
     background-size: cover; /* 배경 이미지 전체 덮도록 */
-    background-position: center; /*  이미지 중앙 정렬 */
+    background-position: center; /* 이미지 중앙 정렬 */
     background-repeat: no-repeat; /* 이미지 반복 안함 */
-    background-attachment: fixed; /* 패럴랙스 효과 */
+    /* 모바일에서 패럴랙스 효과 제거 - 성능 문제 해결 */
+    background-attachment: scroll;
     color: white;
     text-align: center;
     padding: 100px 0;
     position: relative;
     overflow: hidden;
+    /* 폴백 배경색 (이미지 로드 실패시) */
+    background-color: #1e3c72;
+    /* 모바일에서도 이미지가 잘 보이도록 최소 높이 설정 */
+    min-height: 60vh;
 }
 
 /* 히어로 섹션 장식 효과 */
@@ -176,7 +181,7 @@ section h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: #ffffff;
+    color: #333;
     position: relative;
 }
 
@@ -410,9 +415,19 @@ footer p {
         margin-top: 70px;
     }
     
-    /* 히어로 섹션 축소 */
+    /* 히어로 섹션 모바일 최적화 */
     .hero {
         padding: 60px 0;
+        min-height: 50vh; /* 모바일에서 높이 조정 */
+        /* 모바일에서 배경 이미지 강제 적용 */
+        background-attachment: scroll !important;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        /* iOS Safari에서 배경 이미지 버그 해결 */
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
     
     .hero h2 {
