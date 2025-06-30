@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>테스트 웹페이지</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Yun Aport Partner</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -12,12 +12,17 @@
             <div class="logo">
                 <h1>Yun Aport Partner</h1>
             </div>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home">홈</a></li>
                 <li><a href="#about">소개</a></li>
                 <li><a href="#services">서비스</a></li>
                 <li><a href="#contact">연락처</a></li>
             </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </header>
 
@@ -71,7 +76,7 @@
                 <div class="contact-content">
                     <div class="contact-info">
                         <h3>연락 정보</h3>
-                        <p>📧 이메일: contact@mywebsite.com</p>
+                        <p>📧 이메일: contact@yunaport.com</p>
                         <p>📞 전화: 010-1234-5678</p>
                         <p>📍 주소: 서울시 강남구 테헤란로 123</p>
                     </div>
@@ -88,11 +93,28 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 MyWebsite. 모든 권리 보유.</p>
+            <p>&copy; 2025 Yun Aport Partner. 모든 권리 보유.</p>
         </div>
     </footer>
 
     <script>
+        // 햄버거 메뉴 토글
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // 메뉴 항목 클릭 시 메뉴 닫기
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
         // 간단한 JavaScript 기능
         document.querySelector('.cta-button').addEventListener('click', function() {
             alert('버튼이 클릭되었습니다!');
