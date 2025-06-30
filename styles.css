@@ -117,7 +117,7 @@ main {
    ========================================================================== */
 .hero {
     /* 배경 이미지 예시 - 아래 주석을 해제하고 이미지 URL을 넣으세요 */
-     background-image: linear-gradient(rgba(30, 60, 114, 0.7), rgba(42, 82, 152, 0.7)), url('./image/boat2.jpg');
+     background-image: linear-gradient(rgba(30, 60, 114, 0.7), rgba(42, 82, 152, 0.7)), url('./image/boat1.jfif');
     background-size: cover; /* 배경 이미지 전체 덮도록 */
     background-position: center; /* 이미지 중앙 정렬 */
     background-repeat: no-repeat; /* 이미지 반복 안함 */
