@@ -3,19 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나의 멋진 랜딩 페이지</title>
-    <link rel="stylesheet" href="style.css">
+    <title>테스트 웹페이지</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>우리 회사를 소개합니다!</h1>
+        <nav>
+            <div class="logo">
+                <h1>MyWebsite</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#about">소개</a></li>
+                <li><a href="#services">서비스</a></li>
+                <li><a href="#contact">연락처</a></li>
+            </ul>
+        </nav>
     </header>
+
     <main>
-        <p>여기에 우리 서비스의 핵심 가치를 담으세요.</p>
-        <button>지금 바로 시작하기</button>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>웹사이트에 오신 것을 환영합니다</h2>
+                <p>이것은 HTML과 CSS로 만든 테스트 웹페이지입니다.</p>
+                <button class="cta-button">시작하기</button>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2>소개</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>우리는 웹 개발과 디자인에 열정을 가진 팀입니다. 고객의 요구사항에 맞는 최고의 솔루션을 제공합니다.</p>
+                        <p>현대적인 기술과 창의적인 아이디어를 결합하여 독특하고 효과적인 웹사이트를 만듭니다.</p>
+                    </div>
+                    <div class="about-image">
+                        <div class="placeholder-image">이미지 영역</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2>서비스</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>웹 디자인</h3>
+                        <p>사용자 친화적이고 아름다운 웹사이트 디자인을 제공합니다.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>웹 개발</h3>
+                        <p>최신 기술을 활용한 반응형 웹사이트 개발 서비스입니다.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>SEO 최적화</h3>
+                        <p>검색 엔진 최적화를 통해 더 많은 방문자를 유치합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>연락처</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>연락 정보</h3>
+                        <p>📧 이메일: contact@mywebsite.com</p>
+                        <p>📞 전화: 010-1234-5678</p>
+                        <p>📍 주소: 서울시 강남구 테헤란로 123</p>
+                    </div>
+                    <form class="contact-form">
+                        <input type="text" placeholder="이름" required>
+                        <input type="email" placeholder="이메일" required>
+                        <textarea placeholder="메시지" rows="5" required></textarea>
+                        <button type="submit">전송</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
+
     <footer>
-        <p>&copy; 2025 My Company. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2025 MyWebsite. 모든 권리 보유.</p>
+        </div>
     </footer>
+
+    <script>
+        // 간단한 JavaScript 기능
+        document.querySelector('.cta-button').addEventListener('click', function() {
+            alert('버튼이 클릭되었습니다!');
+        });
+
+        // 연락처 폼 제출
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('메시지가 전송되었습니다!');
+        });
+
+        // 부드러운 스크롤
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
