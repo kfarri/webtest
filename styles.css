@@ -130,8 +130,6 @@ main {
     overflow: hidden;
     /* 폴백 배경색 (이미지 로드 실패시) */
     background-color: #1e3c72;
-    /* 모바일에서도 이미지가 잘 보이도록 최소 높이 설정 */
-    min-height: 60vh;
 }
 
 /* 히어로 섹션 장식 효과 */
