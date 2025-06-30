@@ -118,7 +118,7 @@ main {
 .hero {
     /* 배경 이미지와 어두운 오버레이 */
     background-image: linear-gradient(rgba(30, 60, 114, 0.7), rgba(42, 82, 152, 0.7)), url('./image/boat3.jpg');
-    background-size: cover; /* 배경 이미지 전체 덮도록 */
+    /*background-size: cover; /* 배경 이미지 전체 덮도록 */
     background-position: center; /* 이미지 중앙 정렬 */
     background-repeat: no-repeat; /* 이미지 반복 안함 */
     /* 모바일에서 패럴랙스 효과 제거 - 성능 문제 해결 */
