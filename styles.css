@@ -107,6 +107,11 @@ nav {
     color: white;
 }
 
+/* 모바일용 언어 선택 숨김 (데스크톱에서) */
+.mobile-language {
+    display: none;
+}
+
 /* ==========================================================================
    햄버거 메뉴 (모바일용)
    ========================================================================== */
@@ -143,7 +148,7 @@ nav {
    메인 콘텐츠 영역
    ========================================================================== */
 main {
-    margin-top: 75px; /* 고정 헤더 높이만큼 여백 추가 */
+    margin-top: 78px; /* 고정 헤더 높이만큼 여백 추가 */
 }
 
 /* ==========================================================================
@@ -151,7 +156,7 @@ main {
    ========================================================================== */
 .hero {
     /* 배경 이미지와 어두운 오버레이 */
-    background-image: linear-gradient(rgba(30, 60, 114, 0.7), rgba(42, 82, 152, 0.7)), url('./image/boat3.jpg');
+    background-image: linear-gradient(rgba(30, 60, 114, 0.7), rgba(42, 82, 152, 0.7)), url('./image/boat2.jpg');
     background-size: cover; /* 배경 이미지 전체 덮도록 */
     background-position: center; /* 이미지 중앙 정렬 */
     background-repeat: no-repeat; /* 이미지 반복 안함 */
@@ -164,8 +169,6 @@ main {
     overflow: hidden;
     /* 폴백 배경색 (이미지 로드 실패시) */
     background-color: #1e3c72;
-    /* 모바일에서도 이미지가 잘 보이도록 최소 높이 설정 */
-    min-height: 60vh;
 }
 
 /* 히어로 섹션 장식 효과 */
@@ -193,18 +196,26 @@ main {
 .hero-content {
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 400px; /* 웹에서 충분한 높이 확보 */
 }
 
 .hero h2 {
     font-size: 3rem;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-align: center;
 }
 
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
     opacity: 0.9;
+    text-align: center;
 }
 
 /* ==========================================================================
@@ -224,7 +235,7 @@ section h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: #ffffff;
+    color: #ffffff !important; /* 강제로 흰색 고정 */
     position: relative;
 }
 
@@ -270,11 +281,10 @@ section h2::after {
     font-size: 1.2rem;
     font-weight: bold;
     box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
-    /* 실제 이미지 사용 시:
-    background-image: url('your-image.jpg');
+    background-image: url('/image/dock1.jfif');
     background-size: cover;
     background-position: center;
-    */
+    
 }
 
 /* ==========================================================================
@@ -286,7 +296,7 @@ section h2::after {
 }
 
 .services h2 {
-    color: white;
+    color: #ffffff !important; /* 서비스 섹션도 흰색 강제 고정 */
 }
 
 .services h2::after {
@@ -334,11 +344,13 @@ section h2::after {
 .contact-content {
     display: flex;
     justify-content: center;
+    padding: 40px 0;
 }
 
 .contact-info {
     text-align: center;
     max-width: 500px;
+    padding: 30px;
 }
 
 .contact-info h3 {
@@ -379,9 +391,40 @@ footer p {
         display: flex;
     }
     
-    /* 언어 선택기 숨김 (모바일에서는 메뉴 안에) */
+    /* 데스크톱 언어 선택기 숨김 */
     .language-selector {
         display: none;
+    }
+    
+    /* 모바일용 언어 선택 표시 */
+    .mobile-language {
+        display: block !important;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .mobile-language select {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 5px;
+        padding: 10px 15px;
+        font-size: 1rem;
+        cursor: pointer;
+        width: 200px;
+        text-align: center;
+    }
+    
+    .mobile-language select:focus {
+        outline: none;
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
+    }
+    
+    .mobile-language option {
+        background: #1e3c72;
+        color: white;
     }
     
     /* 모바일 메뉴 스타일 */
@@ -404,13 +447,6 @@ footer p {
         right: 0; /* 화면으로 슬라이드 인 */
     }
     
-    /* 모바일 메뉴에 언어 선택 추가 */
-    .nav-menu::after {
-        content: '';
-        display: block;
-        margin-top: 2rem;
-    }
-    
     .nav-menu li {
         margin: 1rem 0;
     }
@@ -423,32 +459,6 @@ footer p {
     .hero {
         background-position: center center; /* 모바일에서 중앙 정렬 */
     }
-    
-    /* 히어로 섹션 텍스트 크기 조정 */
-    .hero h2 {
-        font-size: 2rem;
-    }
-    
-    /* 그리드를 1열로 변경 */
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    /* 섹션 패딩 축소 */
-    section {
-        padding: 50px 0;
-    }
-    
-    section h2 {
-        font-size: 2rem;
-    }
-
-    /* position: center; /* 모바일에서 중앙 정렬 */
     
     /* 히어로 섹션 텍스트 크기 조정 */
     .hero h2 {
@@ -508,7 +518,7 @@ footer p {
     }
     
     main {
-        margin-top: 70px;
+        margin-top: 60px;
     }
     
     /* 히어로 섹션 모바일 최적화 */
@@ -527,6 +537,14 @@ footer p {
         transform: translate3d(0, 0, 0);
     }
     
+    /* 모바일에서 히어로 콘텐츠 정렬 */
+    .hero-content {
+        text-align: center;
+        align-items: center;
+        padding: 60px 20px 0 20px; /* 위쪽 패딩 40px 추가 */
+        min-height: auto;
+    }
+    
     /* 모바일에서 장식 효과 완전 제거 */
     .hero::before {
         display: none !important;
@@ -536,10 +554,15 @@ footer p {
         font-size: 1.8rem;
         line-height: 1.3;
         word-break: keep-all; /* 단어 단위로 줄바뀜 */
+        text-align: center; /* 모바일에서 중앙 정렬 */
+        margin-bottom: 1rem;
     }
     
     .hero p {
         font-size: 1rem;
+        text-align: center; /* 모바일에서 중앙 정렬 */
+        word-break: keep-all;
+        line-height: 1.5;
     }
     
     /* 컨테이너 패딩 축소 */

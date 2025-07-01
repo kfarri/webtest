@@ -23,10 +23,22 @@
                 <li><a href="#about" data-translate="nav_about">소개</a></li>
                 <li><a href="#services" data-translate="nav_services">서비스</a></li>
                 <li><a href="#contact" data-translate="nav_contact">연락처</a></li>
+                <!-- 모바일용 언어 선택 -->
+                <li class="mobile-language">
+                    <select id="mobileLanguageSelect" onchange="changeLanguage('mobile')">
+                        <option value="">Language</option>
+                        <option value="ko">한국어</option>
+                        <option value="en">English</option>
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                        <option value="es">Español</option>
+                    </select>
+                </li>
             </ul>
             <!-- 언어 선택 -->
             <div class="language-selector">
                 <select id="languageSelect" onchange="changeLanguage()">
+                    <option value="">Language</option>
                     <option value="ko">한국어</option>
                     <option value="en">English</option>
                     <option value="ja">日本語</option>
@@ -65,7 +77,7 @@
                     </div>
                     <!-- 이미지 플레이스홀더 -->
                     <div class="about-image">
-                        <div class="placeholder-image" data-translate="image_placeholder">이미지 영역</div>
+                        <div class="placeholder-image" data-translate="image_placeholder"></div>
                     </div>
                 </div>
             </div>
@@ -131,7 +143,6 @@
                 about_title: "소개",
                 about_text1: "우리는 웹 개발과 디자인에 열정을 가진 팀입니다. 고객의 요구사항에 맞는 최고의 솔루션을 제공합니다.",
                 about_text2: "현대적인 기술과 창의적인 아이디어를 결합하여 독특하고 효과적인 웹사이트를 만듭니다.",
-                image_placeholder: "이미지 영역",
                 services_title: "서비스",
                 service1_title: "웹 디자인",
                 service1_desc: "사용자 친화적이고 아름다운 웹사이트 디자인을 제공합니다.",
@@ -156,7 +167,6 @@
                 about_title: "About Us",
                 about_text1: "We are a team passionate about web development and design. We provide the best solutions tailored to our clients' needs.",
                 about_text2: "We combine modern technology with creative ideas to create unique and effective websites.",
-                image_placeholder: "Image Area",
                 services_title: "Services",
                 service1_title: "Web Design",
                 service1_desc: "We provide user-friendly and beautiful website design.",
@@ -181,7 +191,6 @@
                 about_title: "会社概要",
                 about_text1: "私たちはウェブ開発とデザインに情熱を持つチームです。お客様のニーズに合った最高のソリューションを提供します。",
                 about_text2: "最新技術と創意的なアイデアを組み合わせて、独特で効果的なウェブサイトを作成します。",
-                image_placeholder: "画像エリア",
                 services_title: "サービス",
                 service1_title: "ウェブデザイン",
                 service1_desc: "ユーザーフレンドリーで美しいウェブサイトデザインを提供します。",
@@ -206,7 +215,6 @@
                 about_title: "关于我们",
                 about_text1: "我们是一个对网页开发和设计充满热情的团队。我们为客户提供最适合其需求的解决方案。",
                 about_text2: "我们将现代技术与创意思想相结合，创建独特而有效的网站。",
-                image_placeholder: "图片区域",
                 services_title: "服务",
                 service1_title: "网页设计",
                 service1_desc: "我们提供用户友好且美观的网站设计。",
@@ -231,7 +239,6 @@
                 about_title: "Acerca de Nosotros",
                 about_text1: "Somos un equipo apasionado por el desarrollo web y el diseño. Proporcionamos las mejores soluciones adaptadas a las necesidades de nuestros clientes.",
                 about_text2: "Combinamos tecnología moderna con ideas creativas para crear sitios web únicos y efectivos.",
-                image_placeholder: "Área de Imagen",
                 services_title: "Servicios",
                 service1_title: "Diseño Web",
                 service1_desc: "Proporcionamos diseño de sitios web fácil de usar y hermoso.",
@@ -249,8 +256,17 @@
         };
 
         // 언어 변경 함수
-        function changeLanguage() {
-            const selectedLang = document.getElementById('languageSelect').value;
+        function changeLanguage(source) {
+            let selectedLang;
+            
+            if (source === 'mobile') {
+                selectedLang = document.getElementById('mobileLanguageSelect').value;
+                document.getElementById('languageSelect').value = selectedLang;
+            } else {
+                selectedLang = document.getElementById('languageSelect').value;
+                document.getElementById('mobileLanguageSelect').value = selectedLang;
+            }
+            
             const elements = document.querySelectorAll('[data-translate]');
             
             elements.forEach(element => {
@@ -266,9 +282,12 @@
 
         // 페이지 로드 시 저장된 언어 설정 복원
         window.addEventListener('load', function() {
-            const savedLang = localStorage.getItem('selectedLanguage') || 'ko';
-            document.getElementById('languageSelect').value = savedLang;
-            changeLanguage();
+            const savedLang = localStorage.getItem('selectedLanguage') || ''; // 'ko' → '' 로 변경
+                document.getElementById('languageSelect').value = savedLang;
+                document.getElementById('mobileLanguageSelect').value = savedLang;
+                if (savedLang !== '') { // 저장된 언어가 있을 때만 번역 실행
+                    changeLanguage();
+                }
         });
 
         // 햄버거 메뉴 토글 기능
