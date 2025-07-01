@@ -74,6 +74,40 @@ nav {
 }
 
 /* ==========================================================================
+   언어 선택 스타일
+   ========================================================================== */
+.language-selector {
+    margin-left: 1rem;
+}
+
+.language-selector select {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.language-selector select:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.language-selector select:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 5px rgba(135, 206, 235, 0.5);
+}
+
+.language-selector option {
+    background: #1e3c72;
+    color: white;
+}
+
+/* ==========================================================================
    햄버거 메뉴 (모바일용)
    ========================================================================== */
 .hamburger {
@@ -130,6 +164,8 @@ main {
     overflow: hidden;
     /* 폴백 배경색 (이미지 로드 실패시) */
     background-color: #1e3c72;
+    /* 모바일에서도 이미지가 잘 보이도록 최소 높이 설정 */
+    min-height: 60vh;
 }
 
 /* 히어로 섹션 장식 효과 */
@@ -343,6 +379,11 @@ footer p {
         display: flex;
     }
     
+    /* 언어 선택기 숨김 (모바일에서는 메뉴 안에) */
+    .language-selector {
+        display: none;
+    }
+    
     /* 모바일 메뉴 스타일 */
     .nav-menu {
         position: fixed;
@@ -363,6 +404,13 @@ footer p {
         right: 0; /* 화면으로 슬라이드 인 */
     }
     
+    /* 모바일 메뉴에 언어 선택 추가 */
+    .nav-menu::after {
+        content: '';
+        display: block;
+        margin-top: 2rem;
+    }
+    
     .nav-menu li {
         margin: 1rem 0;
     }
@@ -375,6 +423,32 @@ footer p {
     .hero {
         background-position: center center; /* 모바일에서 중앙 정렬 */
     }
+    
+    /* 히어로 섹션 텍스트 크기 조정 */
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    /* 그리드를 1열로 변경 */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* 섹션 패딩 축소 */
+    section {
+        padding: 50px 0;
+    }
+    
+    section h2 {
+        font-size: 2rem;
+    }
+
+    /* position: center; /* 모바일에서 중앙 정렬 */
     
     /* 히어로 섹션 텍스트 크기 조정 */
     .hero h2 {
@@ -417,6 +491,16 @@ footer p {
         font-size: 1.4rem;
     }
     
+    /* 언어 선택기 더 작게 */
+    .language-selector {
+        margin-left: 0.5rem;
+    }
+    
+    .language-selector select {
+        font-size: 0.8rem;
+        padding: 3px 6px;
+    }
+    
     /* 모바일 메뉴 위치 조정 */
     .nav-menu {
         top: 70px;
@@ -450,6 +534,8 @@ footer p {
     
     .hero h2 {
         font-size: 1.8rem;
+        line-height: 1.3;
+        word-break: keep-all; /* 단어 단위로 줄바뀜 */
     }
     
     .hero p {
