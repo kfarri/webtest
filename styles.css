@@ -255,6 +255,14 @@ section h2::after {
 /* ==========================================================================
    소개 섹션
    ========================================================================== */
+.about {
+    background-color: #f8f9fa;
+}
+
+.about h2 {
+    color: #2c3e50 !important;
+}
+
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr; /* 2열 그리드 */
@@ -267,6 +275,13 @@ section h2::after {
     margin-bottom: 1.5rem;
     color: #666;
     line-height: 1.8;
+    word-break: keep-all; /* 단어 단위로 줄바꿈 */
+    text-align: justify;
+}
+
+/* 첫 번째 문단 특별 처리 */
+.about-text p:first-child {
+    text-align: justify;
 }
 
 /* 이미지 플레이스홀더 (실제 이미지로 교체 가능) */
@@ -284,7 +299,6 @@ section h2::after {
     background-image: url('/image/dock2.png');
     background-size: cover;
     background-position: center;
-    
 }
 
 /* ==========================================================================
@@ -315,7 +329,7 @@ section h2::after {
     background: rgba(255, 255, 255, 0.1); /* 반투명 배경 */
     padding: 2rem;
     border-radius: 15px;
-    text-align: center;
+    text-align: left; /* 왼쪽 정렬로 변경 */
     backdrop-filter: blur(10px); /* 블러 효과 */
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -331,16 +345,45 @@ section h2::after {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: #87ceeb;
+    text-align: center; /* 제목만 중앙 정렬 유지 */
 }
 
-.service-card p {
+/* 서비스 설명 리스트 스타일 */
+.service-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
     font-size: 1rem;
     opacity: 0.9;
+    line-height: 1.5;
+}
+
+.service-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #87ceeb;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 /* ==========================================================================
    연락처 섹션
    ========================================================================== */
+.contact {
+    background-color: #f8f9fa;
+}
+
+.contact h2 {
+    color: #2c3e50 !important;
+}
+
 .contact-content {
     display: flex;
     justify-content: center;
