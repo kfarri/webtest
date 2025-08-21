@@ -118,7 +118,7 @@
             </div>
         </section>
 
-        <!-- 연락처 섹션 -->
+        <!-- 연락처 섹션 - Base64 이메일 보호 적용 -->
         <section id="contact" class="contact">
             <div class="container">
                 <h2 data-translate="contact_title">연락처</h2>
@@ -141,9 +141,36 @@
         </div>
     </footer>
 
-    <!-- JavaScript 기능들 - 수정된 번역 데이터 -->
+    <!-- JavaScript 기능들 - Base64 이메일 보호 기능 완전 통합 -->
     <script>
-        // 다국어 번역 데이터 - 4개 문단으로 재구성
+        // Base64 인코딩된 이메일 주소 (하베스팅 방지)
+        // 원본: yunaportpartner@gmail.com
+        // 인코딩: eXVuYXBvcnRwYXJ0bmVyQGdtYWlsLmNvbQ==
+        const ENCODED_EMAIL_ADDRESS = 'eXVuYXBvcnRwYXJ0bmVyQGdtYWlsLmNvbQ==';
+        
+        // Base64 디코딩 함수 (이메일 복원)
+        function decodeProtectedEmail(encodedString) {
+            try {
+                // JavaScript 내장 atob() 함수로 Base64 디코딩
+                return atob(encodedString);
+            } catch (error) {
+                console.warn('이메일 디코딩 실패:', error);
+                // 폴백 이메일 (디코딩 실패 시)
+                return 'contact@yunaventures.com';
+            }
+        }
+        
+        // 보호된 이메일 주소 표시 함수
+        function renderProtectedEmail() {
+            const emailContainer = document.getElementById('protected-email');
+            if (emailContainer) {
+                const realEmail = decodeProtectedEmail(ENCODED_EMAIL_ADDRESS);
+                // 실제 이메일 주소와 mailto 링크 생성
+                emailContainer.innerHTML = `<a href="mailto:${realEmail}" title="이메일 보내기">${realEmail}</a>`;
+            }
+        }
+        
+        // 다국어 번역 데이터 - 이메일 보호 기능 반영
         const translations = {
             ko: {
                 nav_home: "홈",
@@ -166,7 +193,7 @@
                 service3_desc: "• 요트 정비, 세척, 급유 등 현장 작업 지원\n• 필요 부품/자재 수급 및 업체 연결\n• 현장 통역, 전기·수도 등 인프라 연계\n• 고객 요청에 따른 맞춤형 프리미엄 서비스 제공",
                 contact_title: "연락처",
                 contact_info: "연락 정보",
-                contact_email: "📧 이메일: yunaportpartner@gmail.com",
+                contact_email: "📧 이메일: ",
                 contact_kakao: "💬 카카오톡 ID: yunaventures",
                 footer_text: "© 2025 Yuna Port Partner. All rights reserved."
             },
@@ -191,7 +218,7 @@
                 service3_desc: "• On-site support for yacht maintenance, cleaning, refueling\n• Sourcing necessary parts/materials and vendor connections\n• On-site interpretation, electrical and water infrastructure coordination\n• Customized premium services according to client requests",
                 contact_title: "Contact",
                 contact_info: "Contact Information",
-                contact_email: "📧 Email: yunaportpartner@gmail.com",
+                contact_email: "📧 Email: ",
                 contact_kakao: "💬 KakaoTalk ID: yunaventures",
                 footer_text: "© 2025 Yuna Port Partner. All rights reserved."
             },
@@ -216,100 +243,119 @@
                 service3_desc: "• Поддержка на месте для техобслуживания яхт, очистки, заправки топливом\n• Поиск необходимых запчастей/материалов и связь с поставщиками\n• Переводческие услуги на месте, координация электричества и водоснабжения\n• Индивидуальные премиум-услуги по запросу клиента",
                 contact_title: "Контакты",
                 contact_info: "Контактная информация",
-                contact_email: "📧 Email: yunaportpartner@gmail.com",
+                contact_email: "📧 Email: ",
                 contact_kakao: "💬 KakaoTalk ID: yunaventures",
                 footer_text: "© 2025 Yuna Port Partner. Все права защищены."
             }
         };
 
-        // 언어 변경 함수
+        // 언어 변경 함수 - 이메일 보호 기능 완전 통합
         function changeLanguage(source) {
-            let selectedLang;
+            let selectedLanguage;
             
             if (source === 'mobile') {
-                selectedLang = document.getElementById('mobileLanguageSelect').value;
-                document.getElementById('languageSelect').value = selectedLang;
+                selectedLanguage = document.getElementById('mobileLanguageSelect').value;
+                document.getElementById('languageSelect').value = selectedLanguage;
             } else {
-                selectedLang = document.getElementById('languageSelect').value;
-                document.getElementById('mobileLanguageSelect').value = selectedLang;
+                selectedLanguage = document.getElementById('languageSelect').value;
+                document.getElementById('mobileLanguageSelect').value = selectedLanguage;
             }
             
-            const elements = document.querySelectorAll('[data-translate]');
+            const translateElements = document.querySelectorAll('[data-translate]');
             
-            elements.forEach(element => {
-                const key = element.getAttribute('data-translate');
-                if (translations[selectedLang] && translations[selectedLang][key]) {
-                    // 서비스 항목의 경우 ul 태그 내용을 변경
-                    if (key.includes('service') && key.includes('_desc')) {
-                        const serviceText = translations[selectedLang][key];
-                        const listItems = serviceText.split('\n').map(item => 
-                            item.replace('• ', '').trim()
-                        ).filter(item => item.length > 0);
+            translateElements.forEach(element => {
+                const translationKey = element.getAttribute('data-translate');
+                
+                if (translations[selectedLanguage] && translations[selectedLanguage][translationKey]) {
+                    // 서비스 항목의 경우 리스트 형태로 처리
+                    if (translationKey.includes('service') && translationKey.includes('_desc')) {
+                        const serviceContent = translations[selectedLanguage][translationKey];
+                        const listItems = serviceContent.split('\n')
+                            .map(item => item.replace('• ', '').trim())
+                            .filter(item => item.length > 0);
                         
                         element.innerHTML = '';
                         listItems.forEach(item => {
-                            const li = document.createElement('li');
-                            li.textContent = item;
-                            element.appendChild(li);
+                            const listItem = document.createElement('li');
+                            listItem.textContent = item;
+                            element.appendChild(listItem);
                         });
-                    } else {
-                        element.textContent = translations[selectedLang][key];
+                    } 
+                    // 이메일 항목의 경우 특별 처리 (Base64 디코딩 적용)
+                    else if (translationKey === 'contact_email') {
+                        const decodedEmail = decodeProtectedEmail(ENCODED_EMAIL_ADDRESS);
+                        element.innerHTML = `${translations[selectedLanguage][translationKey]}<span id="protected-email"><a href="mailto:${decodedEmail}" title="이메일 보내기">${decodedEmail}</a></span>`;
+                    } 
+                    // 일반 텍스트 번역
+                    else {
+                        element.textContent = translations[selectedLanguage][translationKey];
                     }
                 }
             });
 
-            // 선택된 언어를 localStorage에 저장 (브라우저 환경에서는 작동하지 않음)
+            // 언어 설정을 로컬 스토리지에 저장
             try {
-                localStorage.setItem('selectedLanguage', selectedLang);
-            } catch (e) {
-                // localStorage가 지원되지 않는 환경에서는 무시
+                localStorage.setItem('selectedLanguage', selectedLanguage);
+            } catch (error) {
+                console.warn('로컬 스토리지 저장 실패:', error);
             }
         }
 
-        // 페이지 로드 시 저장된 언어 설정 복원
-        window.addEventListener('load', function() {
-            let savedLang = '';
+        // 페이지 로드 시 초기화 함수
+        function initializePage() {
+            // 보호된 이메일 주소 표시
+            renderProtectedEmail();
+            
+            // 저장된 언어 설정 복원
+            let savedLanguage = '';
             try {
-                savedLang = localStorage.getItem('selectedLanguage') || '';
-            } catch (e) {
-                // localStorage가 지원되지 않는 환경에서는 기본값 사용
-                savedLang = '';
+                savedLanguage = localStorage.getItem('selectedLanguage') || '';
+            } catch (error) {
+                console.warn('로컬 스토리지 접근 실패:', error);
+                savedLanguage = '';
             }
             
-            document.getElementById('languageSelect').value = savedLang;
-            document.getElementById('mobileLanguageSelect').value = savedLang;
-            if (savedLang !== '') {
+            // 언어 선택 박스에 저장된 값 설정
+            document.getElementById('languageSelect').value = savedLanguage;
+            document.getElementById('mobileLanguageSelect').value = savedLanguage;
+            
+            // 저장된 언어가 있으면 번역 적용
+            if (savedLanguage !== '') {
                 changeLanguage();
             }
-        });
+        }
+
+        // 페이지 로드 완료 시 초기화 실행
+        window.addEventListener('load', initializePage);
 
         // 햄버거 메뉴 토글 기능
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
+        const hamburgerButton = document.getElementById('hamburger');
+        const navigationMenu = document.getElementById('nav-menu');
 
-        // 햄버거 버튼 클릭 시 메뉴 열기/닫기
-        hamburger.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
+        // 햄버거 버튼 클릭 이벤트
+        hamburgerButton.addEventListener('click', function() {
+            navigationMenu.classList.toggle('active');
+            hamburgerButton.classList.toggle('active');
         });
 
-        // 메뉴 항목 클릭 시 메뉴 자동 닫기 (모바일)
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
+        // 메뉴 항목 클릭 시 모바일 메뉴 자동 닫기
+        document.querySelectorAll('.nav-menu a').forEach(menuLink => {
+            menuLink.addEventListener('click', () => {
+                navigationMenu.classList.remove('active');
+                hamburgerButton.classList.remove('active');
             });
         });
 
-        // 부드러운 스크롤 효과
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    // 헤더 높이만큼 오프셋 적용
-                    const headerHeight = 78;
-                    const targetPosition = target.offsetTop - headerHeight;
+        // 부드러운 스크롤 효과 구현
+        document.querySelectorAll('a[href^="#"]').forEach(anchorLink => {
+            anchorLink.addEventListener('click', function (event) {
+                event.preventDefault();
+                const targetSection = document.querySelector(this.getAttribute('href'));
+                
+                if (targetSection) {
+                    // 고정 헤더 높이만큼 오프셋 조정
+                    const headerOffset = 78;
+                    const targetPosition = targetSection.offsetTop - headerOffset;
                     
                     window.scrollTo({
                         top: targetPosition,
