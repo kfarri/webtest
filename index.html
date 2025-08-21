@@ -61,16 +61,17 @@
             </div>
         </section>
 
-        <!-- 소개 섹션 -->
+        <!-- 소개 섹션 - 4개 문단으로 재구성 -->
         <section id="about" class="about">
             <div class="container">
                 <h2 data-translate="about_title">소개</h2>
                 <div class="about-grid">
-                    <!-- 소개 텍스트 -->
+                    <!-- 소개 텍스트 - 4개 문단으로 분리 -->
                     <div class="about-text">
-                        <p data-translate="about_text1">(주)유나포트파트너는 요트 입출항, 정박, 통관, 정비, 허가 절차 등 항만 운영 전반을 원스톱으로 지원하는 요트 전문 에이전시입니다.<br>국내외 항만 실무에 대한 깊은 이해와 풍부한 현장 경험을 바탕으로, 고객이 복잡한 행정과 물류 절차에서 벗어나 요트 운항에만 집중할 수 있도록 돕습니다.</p>
-                        <p data-translate="about_text2">우리는 전문성과 정확성을 바탕으로, 모든 과정을 신속하고 효율적으로 처리합니다. 고급 요트 시장에 걸맞은 품격 있는 서비스를 제공하며, 각 요트의 특성과 고객의 니즈에 최적화된 맞춤형 솔루션을 제안합니다.</p>
-                        <p data-translate="about_text3">㈜유나포트파트너는 단순한 서비스 제공자를 넘어, 고객의 항해가 시작되는 순간부터 마무리까지 함께하는 '믿을 수 있는 포트 파트너'입니다.</p>
+                        <p data-translate="about_text1">(주)유나포트파트너는 요트 입출항, 정박, 통관, 정비, 허가 절차 등 항만 운영 전반을 원스톱으로 지원하는 요트 전문 에이전시입니다.</p>
+                        <p data-translate="about_text2">국내외 항만 실무에 대한 깊은 이해와 풍부한 현장 경험을 바탕으로, 고객이 복잡한 행정과 물류 절차에서 벗어나 요트 운항에만 집중할 수 있도록 돕습니다.</p>
+                        <p data-translate="about_text3">우리는 전문성과 정확성을 바탕으로, 모든 과정을 신속하고 효율적으로 처리합니다. 고급 요트 시장에 걸맞은 품격 있는 서비스를 제공하며, 각 요트의 특성과 고객의 니즈에 최적화된 맞춤형 솔루션을 제안합니다.</p>
+                        <p data-translate="about_text4">㈜유나포트파트너는 단순한 서비스 제공자를 넘어, 고객의 항해가 시작되는 순간부터 마무리까지 함께하는 '믿을 수 있는 포트 파트너'입니다.</p>
                     </div>
                     <!-- 이미지 플레이스홀더 -->
                     <div class="about-image">
@@ -125,9 +126,8 @@
                     <!-- 연락처 정보 -->
                     <div class="contact-info">
                         <h3 data-translate="contact_info">연락 정보</h3>
-                        <p data-translate="contact_email">📧 이메일: contact@yunaport.com</p>
-                        <p data-translate="contact_phone">📞 전화: 010-1234-5678</p>
-                        <p data-translate="contact_address">📍 주소: 서울시 강남구 테헤란로 123</p>
+                        <p data-translate="contact_kakao">💬 카카오톡 ID: yunaventures</p>
+                        <p data-translate="contact_email" id="email-display">📧 이메일: <span id="protected-email">로딩 중...</span></p>
                     </div>
                 </div>
             </div>
@@ -141,9 +141,9 @@
         </div>
     </footer>
 
-    <!-- JavaScript 기능들 -->
+    <!-- JavaScript 기능들 - 수정된 번역 데이터 -->
     <script>
-        // 다국어 번역 데이터
+        // 다국어 번역 데이터 - 4개 문단으로 재구성
         const translations = {
             ko: {
                 nav_home: "홈",
@@ -153,9 +153,10 @@
                 hero_title: '"Your Reliable Port Partner"',
                 hero_subtitle: "신뢰와 효율의 스마트 해운 에이전시",
                 about_title: "소개",
-                about_text1: "(주)유나포트파트너는 요트 입출항, 정박, 통관, 정비, 허가 절차 등 항만 운영 전반을 원스톱으로 지원하는 요트 전문 에이전시입니다.\n국내외 항만 실무에 대한 깊은 이해와 풍부한 현장 경험을 바탕으로, 고객이 복잡한 행정과 물류 절차에서 벗어나 요트 운항에만 집중할 수 있도록 돕습니다.",
-                about_text2: "우리는 전문성과 정확성을 바탕으로, 모든 과정을 신속하고 효율적으로 처리합니다. 고급 요트 시장에 걸맞은 품격 있는 서비스를 제공하며, 각 요트의 특성과 고객의 니즈에 최적화된 맞춤형 솔루션을 제안합니다.",
-                about_text3: "㈜유나포트파트너는 단순한 서비스 제공자를 넘어, 고객의 항해가 시작되는 순간부터 마무리까지 함께하는 '믿을 수 있는 포트 파트너'입니다.",
+                about_text1: "(주)유나포트파트너는 요트 입출항, 정박, 통관, 정비, 허가 절차 등 항만 운영 전반을 원스톱으로 지원하는 요트 전문 에이전시입니다.",
+                about_text2: "국내외 항만 실무에 대한 깊은 이해와 풍부한 현장 경험을 바탕으로, 고객이 복잡한 행정과 물류 절차에서 벗어나 요트 운항에만 집중할 수 있도록 돕습니다.",
+                about_text3: "우리는 전문성과 정확성을 바탕으로, 모든 과정을 신속하고 효율적으로 처리합니다. 고급 요트 시장에 걸맞은 품격 있는 서비스를 제공하며, 각 요트의 특성과 고객의 니즈에 최적화된 맞춤형 솔루션을 제안합니다.",
+                about_text4: "㈜유나포트파트너는 단순한 서비스 제공자를 넘어, 고객의 항해가 시작되는 순간부터 마무리까지 함께하는 '믿을 수 있는 포트 파트너'입니다.",
                 services_title: "서비스",
                 service1_title: "요트 항만 운영 지원",
                 service1_desc: "• 국내외 요트 입출항 신고 및 허가 절차 대행\n• 정박 위치 확보 및 항만 시설 예약\n• 관할 기관과의 업무 조율 및 실무 대응\n• 선박 입출항 관련 서류 작성 및 제출",
@@ -165,10 +166,9 @@
                 service3_desc: "• 요트 정비, 세척, 급유 등 현장 작업 지원\n• 필요 부품/자재 수급 및 업체 연결\n• 현장 통역, 전기·수도 등 인프라 연계\n• 고객 요청에 따른 맞춤형 프리미엄 서비스 제공",
                 contact_title: "연락처",
                 contact_info: "연락 정보",
-                contact_email: "📧 이메일: contact@yunaport.com",
-                contact_phone: "📞 전화: 010-1234-5678",
-                contact_address: "📍 주소: 서울시 강남구 테헤란로 123",
-                footer_text: "© 2025 Yuna Port Partner. 모든 권리 보유."
+                contact_email: "📧 이메일: yunaportpartner@gmail.com",
+                contact_kakao: "💬 카카오톡 ID: yunaventures",
+                footer_text: "© 2025 Yuna Port Partner. All rights reserved."
             },
             en: {
                 nav_home: "Home",
@@ -178,9 +178,10 @@
                 hero_title: '"Your Reliable Port Partner"',
                 hero_subtitle: "Your Reliable Port Partner",
                 about_title: "About Us",
-                about_text1: "YUNA PORT PARTNER is a specialized yacht agency offering comprehensive port services, including yacht clearance, berthing, maintenance, customs, and regulatory procedures.\nWith in-depth knowledge of domestic and international port operations and hands-on experience, we help clients focus on the joy of yachting while we manage the complexity.",
-                about_text2: "We prioritize professionalism, speed, and precision, providing high-quality service tailored to each vessel and client. From routine processes to personalized support, we deliver efficient and sophisticated solutions for the premium yacht sector.",
-                about_text3: "More than just a service provider, YUNA PORT PARTNER is your trusted port partner—dedicated to every moment of your voyage.",
+                about_text1: "YUNA PORT PARTNER is a specialized yacht agency offering comprehensive port services, including yacht clearance, berthing, maintenance, customs, and regulatory procedures.",
+                about_text2: "With in-depth knowledge of domestic and international port operations and hands-on experience, we help clients focus on the joy of yachting while we manage the complexity.",
+                about_text3: "We prioritize professionalism, speed, and precision, providing high-quality service tailored to each vessel and client. From routine processes to personalized support, we deliver efficient and sophisticated solutions for the premium yacht sector.",
+                about_text4: "More than just a service provider, YUNA PORT PARTNER is your trusted port partner—dedicated to every moment of your voyage.",
                 services_title: "Services",
                 service1_title: "Port Operations Support",
                 service1_desc: "• Yacht entry/exit clearance and permit procedures\n• Securing berth positions and port facility reservations\n• Coordinating with regulatory authorities and operational support\n• Preparation and submission of vessel entry/exit documentation",
@@ -190,9 +191,8 @@
                 service3_desc: "• On-site support for yacht maintenance, cleaning, refueling\n• Sourcing necessary parts/materials and vendor connections\n• On-site interpretation, electrical and water infrastructure coordination\n• Customized premium services according to client requests",
                 contact_title: "Contact",
                 contact_info: "Contact Information",
-                contact_email: "📧 Email: contact@yunaport.com",
-                contact_phone: "📞 Phone: 010-1234-5678",
-                contact_address: "📍 Address: 123 Teheran-ro, Gangnam-gu, Seoul",
+                contact_email: "📧 Email: yunaportpartner@gmail.com",
+                contact_kakao: "💬 KakaoTalk ID: yunaventures",
                 footer_text: "© 2025 Yuna Port Partner. All rights reserved."
             },
             ru: {
@@ -203,9 +203,10 @@
                 hero_title: '"Your Reliable Port Partner"',
                 hero_subtitle: "Надёжный партнёр в порту",
                 about_title: "О нас",
-                about_text1: "YUNA PORT PARTNER — это специализированное агентство по обслуживанию яхт, предлагающее полный спектр портовых услуг: оформление захода и выхода судов, швартовка, техобслуживание, таможенное оформление и разрешительная документация.\nБлагодаря глубокому пониманию портовой логистики в Корее и за рубежом, а также богатому практическому опыту, мы берём на себя все сложные процессы, чтобы вы могли сосредоточиться на управлении своей яхтой.",
-                about_text2: "YUNA PORT PARTNER обеспечивает профессиональный, быстрый и точный сервис, предлагая индивидуальные решения для каждого клиента и судна.",
-                about_text3: "Мы — не просто агентство. Мы — ваш надёжный партнёр в каждом этапе вашего морского путешествия.",
+                about_text1: "YUNA PORT PARTNER — это специализированное агентство по обслуживанию яхт, предлагающее полный спектр портовых услуг: оформление захода и выхода судов, швартовка, техобслуживание, таможенное оформление и разрешительная документация.",
+                about_text2: "Благодаря глубокому пониманию портовой логистики в Корее и за рубежом, а также богатому практическому опыту, мы берём на себя все сложные процессы, чтобы вы могли сосредоточиться на управлении своей яхтой.",
+                about_text3: "YUNA PORT PARTNER обеспечивает профессиональный, быстрый и точный сервис, предлагая индивидуальные решения для каждого клиента и судна.",
+                about_text4: "Мы — не просто агентство. Мы — ваш надёжный партнёр в каждом этапе вашего морского путешествия.",
                 services_title: "Услуги",
                 service1_title: "Поддержка портовых операций",
                 service1_desc: "• Оформление въезда/выезда яхт и разрешительные процедуры\n• Обеспечение швартовных мест и бронирование портовых объектов\n• Координация с регулирующими органами и операционная поддержка\n• Подготовка и подача документации по въезду/выезду судов",
@@ -215,9 +216,8 @@
                 service3_desc: "• Поддержка на месте для техобслуживания яхт, очистки, заправки топливом\n• Поиск необходимых запчастей/материалов и связь с поставщиками\n• Переводческие услуги на месте, координация электричества и водоснабжения\n• Индивидуальные премиум-услуги по запросу клиента",
                 contact_title: "Контакты",
                 contact_info: "Контактная информация",
-                contact_email: "📧 Email: contact@yunaport.com",
-                contact_phone: "📞 Телефон: 010-1234-5678",
-                contact_address: "📍 Адрес: 123 Teheran-ro, Gangnam-gu, Сеул",
+                contact_email: "📧 Email: yunaportpartner@gmail.com",
+                contact_kakao: "💬 KakaoTalk ID: yunaventures",
                 footer_text: "© 2025 Yuna Port Partner. Все права защищены."
             }
         };
@@ -252,9 +252,6 @@
                             li.textContent = item;
                             element.appendChild(li);
                         });
-                    } else if (key.includes('about_text')) {
-                        // 소개글의 경우 \n을 <br>로 변환
-                        element.innerHTML = translations[selectedLang][key].replace(/\n/g, '<br>');
                     } else {
                         element.textContent = translations[selectedLang][key];
                     }
@@ -308,9 +305,17 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    // 헤더 높이만큼 오프셋 적용
+                    const headerHeight = 78;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>
