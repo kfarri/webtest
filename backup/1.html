@@ -126,8 +126,9 @@
                     <!-- 연락처 정보 -->
                     <div class="contact-info">
                         <h3 data-translate="contact_info">연락 정보</h3>
-                        <p data-translate="contact_kakao">💬 카카오톡 ID: yunaventures</p>
-                        <p data-translate="contact_email" id="email-display">📧 이메일: <span id="protected-email">로딩 중...</span></p>
+                        <p><span class="contact-label" data-translate="contact_kakao_label">💬  카카오톡:</span> <span class="contact-value">yunaventures</span></p>
+                        <p><span class="contact-label" data-translate="contact_instagram_label">📷 인스타그램:</span> <span class="contact-value">yunaportpartner</span></p>
+                        <p><span class="contact-label" data-translate="contact_email_label">📧 이메일:</span> <span id="protected-email" class="contact-value">로딩 중...</span></p>
                     </div>
                 </div>
             </div>
@@ -137,7 +138,7 @@
     <!-- 하단 푸터 -->
     <footer>
         <div class="container">
-            <p data-translate="footer_text">&copy; 2025 Yuna Port Partner. 모든 권리 보유.</p>
+            <p data-translate="footer_text">&copy; 2025 Yuna Port Partner. All rights reserved.</p>
         </div>
     </footer>
 
@@ -156,7 +157,7 @@
             } catch (error) {
                 console.warn('이메일 디코딩 실패:', error);
                 // 폴백 이메일 (디코딩 실패 시)
-                return 'contact@yunaventures.com';
+                return 'yunaventures@gmail.com';
             }
         }
         
@@ -167,6 +168,7 @@
                 const realEmail = decodeProtectedEmail(ENCODED_EMAIL_ADDRESS);
                 // 실제 이메일 주소와 mailto 링크 생성
                 emailContainer.innerHTML = `<a href="mailto:${realEmail}" title="이메일 보내기">${realEmail}</a>`;
+                emailContainer.className = 'contact-value'; // 스타일 클래스 유지
             }
         }
         
@@ -193,8 +195,9 @@
                 service3_desc: "• 요트 정비, 세척, 급유 등 현장 작업 지원\n• 필요 부품/자재 수급 및 업체 연결\n• 현장 통역, 전기·수도 등 인프라 연계\n• 고객 요청에 따른 맞춤형 프리미엄 서비스 제공",
                 contact_title: "연락처",
                 contact_info: "연락 정보",
-                contact_email: "📧 이메일: ",
-                contact_kakao: "💬 카카오톡 ID: yunaventures",
+                contact_kakao_label: "💬 카카오톡:",
+                contact_instagram_label: "📷 인스타그램:",
+                contact_email_label: "📧 이메일:",
                 footer_text: "© 2025 Yuna Port Partner. All rights reserved."
             },
             en: {
@@ -218,8 +221,9 @@
                 service3_desc: "• On-site support for yacht maintenance, cleaning, refueling\n• Sourcing necessary parts/materials and vendor connections\n• On-site interpretation, electrical and water infrastructure coordination\n• Customized premium services according to client requests",
                 contact_title: "Contact",
                 contact_info: "Contact Information",
-                contact_email: "📧 Email: ",
-                contact_kakao: "💬 KakaoTalk ID: yunaventures",
+                contact_kakao_label: "💬 KakaoTalk:",
+                contact_instagram_label: "📷 Instagram:",
+                contact_email_label: "📧 Email:",
                 footer_text: "© 2025 Yuna Port Partner. All rights reserved."
             },
             ru: {
@@ -243,8 +247,9 @@
                 service3_desc: "• Поддержка на месте для техобслуживания яхт, очистки, заправки топливом\n• Поиск необходимых запчастей/материалов и связь с поставщиками\n• Переводческие услуги на месте, координация электричества и водоснабжения\n• Индивидуальные премиум-услуги по запросу клиента",
                 contact_title: "Контакты",
                 contact_info: "Контактная информация",
-                contact_email: "📧 Email: ",
-                contact_kakao: "💬 KakaoTalk ID: yunaventures",
+                contact_kakao_label: "💬 KakaoTalk:",
+                contact_instagram_label: "📷 Instagram:",
+                contact_email_label: "📧 Email:",
                 footer_text: "© 2025 Yuna Port Partner. Все права защищены."
             }
         };
@@ -281,11 +286,6 @@
                             element.appendChild(listItem);
                         });
                     } 
-                    // 이메일 항목의 경우 특별 처리 (Base64 디코딩 적용)
-                    else if (translationKey === 'contact_email') {
-                        const decodedEmail = decodeProtectedEmail(ENCODED_EMAIL_ADDRESS);
-                        element.innerHTML = `${translations[selectedLanguage][translationKey]}<span id="protected-email"><a href="mailto:${decodedEmail}" title="이메일 보내기">${decodedEmail}</a></span>`;
-                    } 
                     // 일반 텍스트 번역
                     else {
                         element.textContent = translations[selectedLanguage][translationKey];
@@ -293,11 +293,11 @@
                 }
             });
 
-            // 언어 설정을 로컬 스토리지에 저장
-            try {
-                localStorage.setItem('selectedLanguage', selectedLanguage);
-            } catch (error) {
-                console.warn('로컬 스토리지 저장 실패:', error);
+            // 이메일 주소 별도 처리 (Base64 디코딩 유지)
+            const emailContainer = document.getElementById('protected-email');
+            if (emailContainer) {
+                const decodedEmail = decodeProtectedEmail(ENCODED_EMAIL_ADDRESS);
+                emailContainer.innerHTML = `<a href="mailto:${decodedEmail}" title="이메일 보내기">${decodedEmail}</a>`;
             }
         }
 
@@ -306,25 +306,31 @@
             // 보호된 이메일 주소 표시
             renderProtectedEmail();
             
-            // 저장된 언어 설정 복원
-            let savedLanguage = '';
+            // 저장된 언어 설정 복원 또는 기본 언어(영어) 설정
+            let savedLanguage = 'en'; // 기본값을 영어로 설정
             try {
-                savedLanguage = localStorage.getItem('selectedLanguage') || '';
+                savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
             } catch (error) {
                 console.warn('로컬 스토리지 접근 실패:', error);
-                savedLanguage = '';
+                savedLanguage = 'en';
             }
             
-            // 언어 선택 박스에 저장된 값 설정
+            // 언어 선택 드롭다운에 저장된 언어 반영
             document.getElementById('languageSelect').value = savedLanguage;
             document.getElementById('mobileLanguageSelect').value = savedLanguage;
             
-            // 저장된 언어가 있으면 번역 적용
-            if (savedLanguage !== '') {
+            // 페이지 로드 시 기본 언어(영어) 번역 적용
+            if (savedLanguage && savedLanguage !== '') {
+                // 언어가 설정되어 있으면 해당 언어로 번역 적용
+                changeLanguage();
+            } else {
+                // 저장된 언어가 없으면 영어로 설정하고 번역 적용
+                document.getElementById('languageSelect').value = 'en';
+                document.getElementById('mobileLanguageSelect').value = 'en';
                 changeLanguage();
             }
         }
-
+        
         // 페이지 로드 완료 시 초기화 실행
         window.addEventListener('load', initializePage);
 
