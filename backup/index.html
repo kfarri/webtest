@@ -305,17 +305,32 @@
         function initializePage() {
             // 보호된 이메일 주소 표시
             renderProtectedEmail();
-        }
-        
-         // 저장된 언어 설정 복원 (기본값을 영어로 설정)
-            let savedLanguage = '';
+            
+            // 저장된 언어 설정 복원 또는 기본 언어(영어) 설정
+            let savedLanguage = 'en'; // 기본값을 영어로 설정
             try {
                 savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
             } catch (error) {
                 console.warn('로컬 스토리지 접근 실패:', error);
                 savedLanguage = 'en';
             }
-
+            
+            // 언어 선택 드롭다운에 저장된 언어 반영
+            document.getElementById('languageSelect').value = savedLanguage;
+            document.getElementById('mobileLanguageSelect').value = savedLanguage;
+            
+            // 페이지 로드 시 기본 언어(영어) 번역 적용
+            if (savedLanguage && savedLanguage !== '') {
+                // 언어가 설정되어 있으면 해당 언어로 번역 적용
+                changeLanguage();
+            } else {
+                // 저장된 언어가 없으면 영어로 설정하고 번역 적용
+                document.getElementById('languageSelect').value = 'en';
+                document.getElementById('mobileLanguageSelect').value = 'en';
+                changeLanguage();
+            }
+        }
+        
         // 페이지 로드 완료 시 초기화 실행
         window.addEventListener('load', initializePage);
 
