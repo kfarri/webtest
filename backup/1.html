@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 기본 메타 정보 설정 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuna Port Partner</title>
+    <!-- 외부 CSS 파일 연결 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 상단 고정 헤더 -->
+    <header>
+        <!-- 네비게이션 바 -->
+        <nav>
+            <!-- 로고/회사명 -->
+            <div class="logo">
+                <h1>Yuna Port Partner</h1>
+            </div>
+            <!-- 메인 메뉴 -->
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" data-translate="nav_home">홈</a></li>
+                <li><a href="#about" data-translate="nav_about">소개</a></li>
+                <li><a href="#services" data-translate="nav_services">서비스</a></li>
+                <li><a href="#contact" data-translate="nav_contact">연락처</a></li>
+                <!-- 모바일용 언어 선택 -->
+                <li class="mobile-language">
+                    <select id="mobileLanguageSelect" onchange="changeLanguage('mobile')">
+                        <option value="">Language</option>
+                        <option value="ko">한국어</option>
+                        <option value="en">English</option>
+                        <option value="ru">Русский</option>
+                    </select>
+                </li>
+            </ul>
+            <!-- 언어 선택 -->
+            <div class="language-selector">
+                <select id="languageSelect" onchange="changeLanguage()">
+                    <option value="">Language</option>
+                    <option value="ko">한국어</option>
+                    <option value="en">English</option>
+                    <option value="ru">Русский</option>
+                </select>
+            </div>
+            <!-- 모바일용 햄버거 메뉴 버튼 -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main>
+        <!-- 히어로 섹션 (첫 화면) -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2 data-translate="hero_title">"Your Reliable Port Partner"</h2>
+                <p data-translate="hero_subtitle">신뢰와 효율의 스마트 해운 에이전시</p>
+            </div>
+        </section>
+
+        <!-- 소개 섹션 - 4개 문단으로 재구성 -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 data-translate="about_title">소개</h2>
+                <div class="about-grid">
+                    <!-- 소개 텍스트 - 4개 문단으로 분리 -->
+                    <div class="about-text">
+                        <p data-translate="about_text1">(주)유나포트파트너는 요트 입출항, 정박, 통관, 정비, 허가 절차 등 항만 운영 전반을 원스톱으로 지원하는 요트 전문 에이전시입니다.</p>
+                        <p data-translate="about_text2">국내외 항만 실무에 대한 깊은 이해와 풍부한 현장 경험을 바탕으로, 고객이 복잡한 행정과 물류 절차에서 벗어나 요트 운항에만 집중할 수 있도록 돕습니다.</p>
+                        <p data-translate="about_text3">우리는 전문성과 정확성을 바탕으로, 모든 과정을 신속하고 효율적으로 처리합니다. 고급 요트 시장에 걸맞은 품격 있는 서비스를 제공하며, 각 요트의 특성과 고객의 니즈에 최적화된 맞춤형 솔루션을 제안합니다.</p>
+                        <p data-translate="about_text4">㈜유나포트파트너는 단순한 서비스 제공자를 넘어, 고객의 항해가 시작되는 순간부터 마무리까지 함께하는 '믿을 수 있는 포트 파트너'입니다.</p>
+                    </div>
+                    <!-- 이미지 플레이스홀더 -->
+                    <div class="about-image">
+                        <div class="placeholder-image" data-translate="image_placeholder"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 서비스 섹션 -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2 data-translate="services_title">서비스</h2>
+                <!-- 서비스 카드들 -->
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3 data-translate="service1_title">요트 항만 운영 지원</h3>
+                        <ul class="service-list" data-translate="service1_desc">
+                            <li>국내외 요트 입출항 신고 및 허가 절차 대행</li>
+                            <li>정박 위치 확보 및 항만 시설 예약</li>
+                            <li>관할 기관과의 업무 조율 및 실무 대응</li>
+                            <li>선박 입출항 관련 서류 작성 및 제출</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h3 data-translate="service2_title">통관 및 행정 서비스</h3>
+                        <ul class="service-list" data-translate="service2_desc">
+                            <li>요트 및 선원/승객 관련 세관 절차 대행</li>
+                            <li>선박 관련 각종 행정 서류 및 허가 신청</li>
+                            <li>보험, 검역, 출입국관리 등 관련 기관 연계</li>
+                            <li>외국 요트의 국내 체류 연장 및 이동 허가 관리</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h3 data-translate="service3_title">정비 및 맞춤형 현장 지원</h3>
+                        <ul class="service-list" data-translate="service3_desc">
+                            <li>요트 정비, 세척, 급유 등 현장 작업 지원</li>
+                            <li>필요 부품/자재 수급 및 업체 연결</li>
+                            <li>현장 통역, 전기·수도 등 인프라 연계</li>
+                            <li>고객 요청에 따른 맞춤형 프리미엄 서비스 제공</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 연락처 섹션 - Base64 이메일 보호 적용 -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 data-translate="contact_title">연락처</h2>
+                <div class="contact-content">
+                    <!-- 연락처 정보 -->
+                    <div class="contact-info">
+                        <h3 data-translate="contact_info">연락 정보</h3>
+                        <p data-translate="contact_kakao">💬 카카오톡 ID: yunaventures</p>
+                        <p data-translate="contact_email" id="email-display">📧 이메일: <span id="protected-email">로딩 중...</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 하단 푸터 -->
+    <footer>
+        <div class="container">
+            <p data-translate="footer_text">&copy; 2025 Yuna Port Partner. 모든 권리 보유.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript 기능들 - Base64 이메일 보호 기능 완전 통합 -->
+    <script>
+        // Base64 인코딩된 이메일 주소 (하베스팅 방지)
+        // 원본: yunaportpartner@gmail.com
+        // 인코딩: eXVuYXBvcnRwYXJ0bmVyQGdtYWlsLmNvbQ==
+        const ENCODED_EMAIL_ADDRESS = 'eXVuYXBvcnRwYXJ0bmVyQGdtYWlsLmNvbQ==';
+        
+        // Base64 디코딩 함수 (이메일 복원)
+        function decodeProtectedEmail(encodedString) {
+            try {
+                // JavaScript 내장 atob() 함수로 Base64 디코딩
+                return atob(encodedString);
+            } catch (error) {
+                console.warn('이메일 디코딩 실패:', error);
+                // 폴백 이메일 (디코딩 실패 시)
+                return 'contact@yunaventures.com';
+            }
+        }
+        
+        // 보호된 이메일 주소 표시 함수
+        function renderProtectedEmail() {
+            const emailContainer = document.getElementById('protected-email');
+            if (emailContainer) {
+                const realEmail = decodeProtectedEmail(ENCODED_EMAIL_ADDRESS);
+                // 실제 이메일 주소와 mailto 링크 생성
+                emailContainer.innerHTML = `<a href="mailto:${realEmail}" title="이메일 보내기">${realEmail}</a>`;
+            }
+        }
+        
+        // 다국어 번역 데이터 - 이메일 보호 기능 반영
+        const translations = {
+            ko: {
+                nav_home: "홈",
+                nav_about: "소개", 
+                nav_services: "서비스",
+                nav_contact: "연락처",
+                hero_title: '"Your Reliable Port Partner"',
+                hero_subtitle: "신뢰와 효율의 스마트 해운 에이전시",
+                about_title: "소개",
+                about_text1: "(주)유나포트파트너는 요트 입출항, 정박, 통관, 정비, 허가 절차 등 항만 운영 전반을 원스톱으로 지원하는 요트 전문 에이전시입니다.",
+                about_text2: "국내외 항만 실무에 대한 깊은 이해와 풍부한 현장 경험을 바탕으로, 고객이 복잡한 행정과 물류 절차에서 벗어나 요트 운항에만 집중할 수 있도록 돕습니다.",
+                about_text3: "우리는 전문성과 정확성을 바탕으로, 모든 과정을 신속하고 효율적으로 처리합니다. 고급 요트 시장에 걸맞은 품격 있는 서비스를 제공하며, 각 요트의 특성과 고객의 니즈에 최적화된 맞춤형 솔루션을 제안합니다.",
+                about_text4: "㈜유나포트파트너는 단순한 서비스 제공자를 넘어, 고객의 항해가 시작되는 순간부터 마무리까지 함께하는 '믿을 수 있는 포트 파트너'입니다.",
+                services_title: "서비스",
+                service1_title: "요트 항만 운영 지원",
+                service1_desc: "• 국내외 요트 입출항 신고 및 허가 절차 대행\n• 정박 위치 확보 및 항만 시설 예약\n• 관할 기관과의 업무 조율 및 실무 대응\n• 선박 입출항 관련 서류 작성 및 제출",
+                service2_title: "통관 및 행정 서비스",
+                service2_desc: "• 요트 및 선원/승객 관련 세관 절차 대행\n• 선박 관련 각종 행정 서류 및 허가 신청\n• 보험, 검역, 출입국관리 등 관련 기관 연계\n• 외국 요트의 국내 체류 연장 및 이동 허가 관리",
+                service3_title: "정비 및 맞춤형 현장 지원",
+                service3_desc: "• 요트 정비, 세척, 급유 등 현장 작업 지원\n• 필요 부품/자재 수급 및 업체 연결\n• 현장 통역, 전기·수도 등 인프라 연계\n• 고객 요청에 따른 맞춤형 프리미엄 서비스 제공",
+                contact_title: "연락처",
+                contact_info: "연락 정보",
+                contact_email: "📧 이메일: ",
+                contact_kakao: "💬 카카오톡 ID: yunaventures",
+                footer_text: "© 2025 Yuna Port Partner. All rights reserved."
+            },
+            en: {
+                nav_home: "Home",
+                nav_about: "About",
+                nav_services: "Services", 
+                nav_contact: "Contact",
+                hero_title: '"Your Reliable Port Partner"',
+                hero_subtitle: "Your Reliable Port Partner",
+                about_title: "About Us",
+                about_text1: "YUNA PORT PARTNER is a specialized yacht agency offering comprehensive port services, including yacht clearance, berthing, maintenance, customs, and regulatory procedures.",
+                about_text2: "With in-depth knowledge of domestic and international port operations and hands-on experience, we help clients focus on the joy of yachting while we manage the complexity.",
+                about_text3: "We prioritize professionalism, speed, and precision, providing high-quality service tailored to each vessel and client. From routine processes to personalized support, we deliver efficient and sophisticated solutions for the premium yacht sector.",
+                about_text4: "More than just a service provider, YUNA PORT PARTNER is your trusted port partner—dedicated to every moment of your voyage.",
+                services_title: "Services",
+                service1_title: "Port Operations Support",
+                service1_desc: "• Yacht entry/exit clearance and permit procedures\n• Securing berth positions and port facility reservations\n• Coordinating with regulatory authorities and operational support\n• Preparation and submission of vessel entry/exit documentation",
+                service2_title: "Customs & Regulatory Services",
+                service2_desc: "• Customs procedures for yachts, crew and passengers\n• Various administrative documents and permit applications for vessels\n• Coordination with insurance, quarantine, immigration authorities\n• Management of domestic stay extensions and movement permits for foreign yachts",
+                service3_title: "Maintenance & On-Site Solutions",
+                service3_desc: "• On-site support for yacht maintenance, cleaning, refueling\n• Sourcing necessary parts/materials and vendor connections\n• On-site interpretation, electrical and water infrastructure coordination\n• Customized premium services according to client requests",
+                contact_title: "Contact",
+                contact_info: "Contact Information",
+                contact_email: "📧 Email: ",
+                contact_kakao: "💬 KakaoTalk ID: yunaventures",
+                footer_text: "© 2025 Yuna Port Partner. All rights reserved."
+            },
+            ru: {
+                nav_home: "Главная",
+                nav_about: "О нас",
+                nav_services: "Услуги",
+                nav_contact: "Контакты",
+                hero_title: '"Your Reliable Port Partner"',
+                hero_subtitle: "Надёжный партнёр в порту",
+                about_title: "О нас",
+                about_text1: "YUNA PORT PARTNER — это специализированное агентство по обслуживанию яхт, предлагающее полный спектр портовых услуг: оформление захода и выхода судов, швартовка, техобслуживание, таможенное оформление и разрешительная документация.",
+                about_text2: "Благодаря глубокому пониманию портовой логистики в Корее и за рубежом, а также богатому практическому опыту, мы берём на себя все сложные процессы, чтобы вы могли сосредоточиться на управлении своей яхтой.",
+                about_text3: "YUNA PORT PARTNER обеспечивает профессиональный, быстрый и точный сервис, предлагая индивидуальные решения для каждого клиента и судна.",
+                about_text4: "Мы — не просто агентство. Мы — ваш надёжный партнёр в каждом этапе вашего морского путешествия.",
+                services_title: "Услуги",
+                service1_title: "Поддержка портовых операций",
+                service1_desc: "• Оформление въезда/выезда яхт и разрешительные процедуры\n• Обеспечение швартовных мест и бронирование портовых объектов\n• Координация с регулирующими органами и операционная поддержка\n• Подготовка и подача документации по въезду/выезду судов",
+                service2_title: "Таможенные и административные услуги",
+                service2_desc: "• Таможенные процедуры для яхт, экипажа и пассажиров\n• Различные административные документы и заявки на разрешения для судов\n• Координация со страховыми, карантинными, иммиграционными органами\n• Управление продлением пребывания и разрешениями на перемещение для иностранных яхт",
+                service3_title: "Техобслуживание и индивидуальные решения",
+                service3_desc: "• Поддержка на месте для техобслуживания яхт, очистки, заправки топливом\n• Поиск необходимых запчастей/материалов и связь с поставщиками\n• Переводческие услуги на месте, координация электричества и водоснабжения\n• Индивидуальные премиум-услуги по запросу клиента",
+                contact_title: "Контакты",
+                contact_info: "Контактная информация",
+                contact_email: "📧 Email: ",
+                contact_kakao: "💬 KakaoTalk ID: yunaventures",
+                footer_text: "© 2025 Yuna Port Partner. Все права защищены."
+            }
+        };
+
+        // 언어 변경 함수 - 이메일 보호 기능 완전 통합
+        function changeLanguage(source) {
+            let selectedLanguage;
+            
+            if (source === 'mobile') {
+                selectedLanguage = document.getElementById('mobileLanguageSelect').value;
+                document.getElementById('languageSelect').value = selectedLanguage;
+            } else {
+                selectedLanguage = document.getElementById('languageSelect').value;
+                document.getElementById('mobileLanguageSelect').value = selectedLanguage;
+            }
+            
+            const translateElements = document.querySelectorAll('[data-translate]');
+            
+            translateElements.forEach(element => {
+                const translationKey = element.getAttribute('data-translate');
+                
+                if (translations[selectedLanguage] && translations[selectedLanguage][translationKey]) {
+                    // 서비스 항목의 경우 리스트 형태로 처리
+                    if (translationKey.includes('service') && translationKey.includes('_desc')) {
+                        const serviceContent = translations[selectedLanguage][translationKey];
+                        const listItems = serviceContent.split('\n')
+                            .map(item => item.replace('• ', '').trim())
+                            .filter(item => item.length > 0);
+                        
+                        element.innerHTML = '';
+                        listItems.forEach(item => {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = item;
+                            element.appendChild(listItem);
+                        });
+                    } 
+                    // 이메일 항목의 경우 특별 처리 (Base64 디코딩 적용)
+                    else if (translationKey === 'contact_email') {
+                        const decodedEmail = decodeProtectedEmail(ENCODED_EMAIL_ADDRESS);
+                        element.innerHTML = `${translations[selectedLanguage][translationKey]}<span id="protected-email"><a href="mailto:${decodedEmail}" title="이메일 보내기">${decodedEmail}</a></span>`;
+                    } 
+                    // 일반 텍스트 번역
+                    else {
+                        element.textContent = translations[selectedLanguage][translationKey];
+                    }
+                }
+            });
+
+            // 언어 설정을 로컬 스토리지에 저장
+            try {
+                localStorage.setItem('selectedLanguage', selectedLanguage);
+            } catch (error) {
+                console.warn('로컬 스토리지 저장 실패:', error);
+            }
+        }
+
+        // 페이지 로드 시 초기화 함수
+        function initializePage() {
+            // 보호된 이메일 주소 표시
+            renderProtectedEmail();
+            
+            // 저장된 언어 설정 복원
+            let savedLanguage = '';
+            try {
+                savedLanguage = localStorage.getItem('selectedLanguage') || '';
+            } catch (error) {
+                console.warn('로컬 스토리지 접근 실패:', error);
+                savedLanguage = '';
+            }
+            
+            // 언어 선택 박스에 저장된 값 설정
+            document.getElementById('languageSelect').value = savedLanguage;
+            document.getElementById('mobileLanguageSelect').value = savedLanguage;
+            
+            // 저장된 언어가 있으면 번역 적용
+            if (savedLanguage !== '') {
+                changeLanguage();
+            }
+        }
+
+        // 페이지 로드 완료 시 초기화 실행
+        window.addEventListener('load', initializePage);
+
+        // 햄버거 메뉴 토글 기능
+        const hamburgerButton = document.getElementById('hamburger');
+        const navigationMenu = document.getElementById('nav-menu');
+
+        // 햄버거 버튼 클릭 이벤트
+        hamburgerButton.addEventListener('click', function() {
+            navigationMenu.classList.toggle('active');
+            hamburgerButton.classList.toggle('active');
+        });
+
+        // 메뉴 항목 클릭 시 모바일 메뉴 자동 닫기
+        document.querySelectorAll('.nav-menu a').forEach(menuLink => {
+            menuLink.addEventListener('click', () => {
+                navigationMenu.classList.remove('active');
+                hamburgerButton.classList.remove('active');
+            });
+        });
+
+        // 부드러운 스크롤 효과 구현
+        document.querySelectorAll('a[href^="#"]').forEach(anchorLink => {
+            anchorLink.addEventListener('click', function (event) {
+                event.preventDefault();
+                const targetSection = document.querySelector(this.getAttribute('href'));
+                
+                if (targetSection) {
+                    // 고정 헤더 높이만큼 오프셋 조정
+                    const headerOffset = 78;
+                    const targetPosition = targetSection.offsetTop - headerOffset;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
